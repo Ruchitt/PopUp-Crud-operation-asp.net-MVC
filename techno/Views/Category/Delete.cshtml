@@ -1,0 +1,32 @@
+﻿@model Category
+@{
+    Layout = null;
+}
+<form method="post" asp-action="Delete">
+    <input asp-for="CategoryId" hidden/>
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Delete Category</h2>
+            <hr/>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label asp-for = "Name"></label>
+        <input asp-for="Name" disabled class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Description"></label>
+        <input asp-for="Description" disabled class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="IsActive"></label>
+        <div>
+            <input type="checkbox" asp-for="IsActive" disabled/>
+        </div>
+    </div>
+    <p>If You Delete Parent Category then All Child Category Will Be Deleted</p>
+    <button type="submit" class="btn btn-primary" asp-route-id="@Model.CategoryId" style="width:150px">Delete</button>
+    
+</form>
+
+

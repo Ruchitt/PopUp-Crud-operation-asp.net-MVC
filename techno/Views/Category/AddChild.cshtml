@@ -1,0 +1,47 @@
+﻿@model Category
+
+@{
+	Layout = null;
+}
+<form method="post" asp-action="AddChild">
+	<div class="border p-3 mt-4">
+		<div class="mb-3">
+			<label asp-for="Name"></label>
+			<input asp-for="Name" class="form-control" />
+			<span asp-validation-for="Name" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="Description"></label>
+			<input asp-for="Description" class="form-control" />
+			<span asp-validation-for="Description" class="text-danger"></span>
+		</div>
+		<div class="form-group">
+			<label asp-for="IsActive"></label>
+			<div>
+				<input type="checkbox" asp-for="IsActive" />
+			</div>
+		</div>
+		@*<div>
+			Select User: @Html.DropDownListFor(m => m.CategoryId, new SelectList(categories,"CategoryId", "Name"), "Select User")
+		</div>*@
+		@*<label for="dog-names">Choose a dog name:</label>
+				<select name="dog-names" id="dog-names">
+			@foreach(var obj in Model.Name)
+			{
+				<option value=@obj>@obj</option>
+			}
+		</select>*@
+		<div class="mb-3">
+			<label asp-for="ParentCategoryId">Select Parent Category</label>
+		@Html.DropDownListFor(m => m.ParentCategoryId, Model.Values)
+		</div>
+		<button type="submit" class="btn btn-primary" style="width:150px">Add Child</button>
+	</div>
+
+</form>
+
+@section Scripts{
+	@{
+		<partial name="_ValidationScriptsPartial" />
+	}
+}
